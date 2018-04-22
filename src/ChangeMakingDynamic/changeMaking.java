@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Authors: Ahmed Naji, Robert Murch and Zach Schallenberger
- * Date 4/x/18
+ * Date 4/22/18
  * Overview: Program addresses the question of finding the minimum
  * number of coins that add up to a given amount of money, including
  * their respective denominations
