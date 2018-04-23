@@ -14,26 +14,42 @@ import java.util.*;
  */
 
 public class changeMaking {
-    
-    //Class of type list returns a list of Integers:
-    public <Integer> List<Integer> minCoins(int[] coins, int amount){
-        
-        //Statement to force expception for empty coins array:
-        if(coins.length == 0){
-            
-            throw new IllegalArgumentException();
-        }
-        
-        //Implement the dynamic alrgorithm here. The following link is for a great
-        //YouTube tutorial on how to go about it. Be sure to watch all the way to the end
-        //because it shows how to go about addressing the denominations. The way I figure,
-        //you could follow his examples exactly and use two arrays and then
-        //transfer the values from s[p] array into list or even better just start with two lists.
-        //either way should work.
-        //Here is the link: https://www.youtube.com/watch?v=rdI94aW6IWw
-        
-        List list = new ArrayList();
-        
-        return list;
-    }
+
+	//Class of type list returns a list of Integers:
+	public <Integer> List<Integer> minCoins(int[] coins, int amount){
+
+		//Statement to force exception for empty coins array:
+		if(coins.length == 0){
+
+			throw new IllegalArgumentException();
+		}
+
+		//Dynamic Algorithm
+		List list = new ArrayList();
+
+		//minimum # of coins for amount
+		int[] c = new int[amount];
+
+		//last coin used to make amount
+		int[] s = new int[amount];
+
+		//runs the loops to populate the arrays
+		for (int i = 0; i<amount; i++){
+			if (amount == 0){
+				c[amount] = 0;
+			}
+			else{
+				c[amount] = (c[amount-coins[i]]+1);
+			}
+		}
+
+		//adds the coins used to the list
+		int i = amount;
+		while (s[i] != 0){
+			list.add(s[i]);
+			amount = amount - s[i];
+		}
+
+		return list;
+	}
 }
