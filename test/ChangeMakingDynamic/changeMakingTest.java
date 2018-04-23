@@ -1,7 +1,9 @@
 /*
- * Junit 4.x test bench for changeMaking.java. This bench contains x tests. The first of which will test the exception
- * statment (lines 19-22).
+ * JUnit 4.x test bench for changeMaking.java. This bench contains x tests. The first of which will test the exception
+ * statement (lines 19-22).
  * 
+ * Authors: Ahmed Naji, Robert Murch and Zach Schallenberger
+ * Date: 4/22/18 
  */
 package ChangeMakingDynamic;
 
@@ -49,5 +51,4 @@ public class changeMakingTest {
         List result = instance.minCoins(coins, amount);
         assertEquals(expResult, result);
     }
-    
 }
