@@ -51,4 +51,17 @@ public class changeMakingTest {
         List result = instance.minCoins(coins, amount);
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testMinCoins1() {
+        System.out.println("Test 1");
+        int[] coins = {25,10,5,1};
+        int amount = 50;
+        changeMaking instance = new changeMaking();
+        List<Integer> expResult = new ArrayList<>();
+        expResult.add(25);
+        expResult.add(25);
+        List result = instance.minCoins(coins, amount);
+        assertEquals(expResult, result);
+    }
 }

@@ -17,6 +17,9 @@ public class changeMaking {
 
 	//Class of type list returns a list of Integers:
 	public <Integer> List<Integer> minCoins(int[] coins, int amount){
+                
+                //Keeping track of lenght so I dont have to keep calling it.
+                int x = coins.length;
 
 		//Statement to force exception for empty coins array:
 		if(coins.length == 0){
@@ -24,31 +27,55 @@ public class changeMaking {
 			throw new IllegalArgumentException();
 		}
 
-		//Dynamic Algorithm
+		//List for storing coins.
 		List list = new ArrayList();
 
 		//minimum # of coins for amount
-		int[] c = new int[amount];
+		int[] cP = new int[amount + 1];
 
 		//last coin used to make amount
-		int[] s = new int[amount];
+		int[] sP = new int[amount + 1];
+                
+                //Set the first position in c to 1 to start
+                cP[0] =1;
+                
+                //Dynamically find values by keeping track of preveious positions:
+                for(int i = 0; i < amount; i++){
+                    
+                    //must be
+                    if(cP[i] > 0)
+                        
+                        //loop through coins array
+                        for(int j = 0; j < x; j++){
+                            
+                            int y;
+                            y = i + coins[j];
+                            
+                            if(y <= amount && (cP[y] == 0 || cP[y] > cP[i]+1)){
+                                
+                                cP[y] = cP[i] +1;
+                                sP[y] = j;
+                            }
+                        }
+                }
+                
+                //Useing an array because I did this on paper with an array
+                //simply convert it to the list after
+                int[] result = new int[cP[amount] - 1];
+                
+                int newAmount = amount;
+                
+                while(newAmount>0){
+                    
+                    result[cP[newAmount] -2] = coins[sP[newAmount]];
+                    
+                    newAmount = newAmount - coins[sP[newAmount]];
+                }
 
-		//runs the loops to populate the arrays
-		for (int i = 0; i<amount; i++){
-			if (amount == 0){
-				c[amount] = 0;
-			}
-			else{
-				c[amount] = (c[amount-coins[i]]+1);
-			}
-		}
-
-		//adds the coins used to the list
-		int i = amount;
-		while (s[i] != 0){
-			list.add(s[i]);
-			amount = amount - s[i];
-		}
+		for(int i : result){
+                    
+                    list.add(i);
+                }
 
 		return list;
 	}
