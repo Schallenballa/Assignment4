@@ -3,7 +3,7 @@
  * statement (lines 19-22).
  * 
  * Authors: Ahmed Naji, Robert Murch and Zach Schallenberger
- * Date: 4/22/18 
+ * Date: 4/24/18 
  */
 package ChangeMakingDynamic;
 
@@ -64,4 +64,32 @@ public class changeMakingTest {
         List result = instance.minCoins(coins, amount);
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testMinCoins2() {
+        System.out.println("Test 2");
+        int[] coins = {25,10,5,1};
+        int amount = 10;
+        changeMaking instance = new changeMaking();
+        List<Integer> expResult = new ArrayList<>();
+        expResult.add(10);
+        List result = instance.minCoins(coins, amount);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testMinCoins3() {
+        System.out.println("Test 3");
+        int[] coins = {10,5};
+        int amount = 25;
+        changeMaking instance = new changeMaking();
+        List<Integer> expResult = new ArrayList<>();
+        expResult.add(5);
+        expResult.add(10);
+        expResult.add(10);
+        List result = instance.minCoins(coins, amount);
+        assertEquals(expResult, result);
+    }
+    
+    
 }
